@@ -30,16 +30,20 @@
 ## 🚀 快速开始
 
 ### 在线访问
-直接打开任意HTML文件即可在浏览器中查看:
-- `index.html` - 主入口页面
-- `yuansuzhouqibiao.html` - 元素周期表
-- `dashboard.html` - 数据大屏
-- `放射性药物原理.html` - 药物原理
+
+🌐 **网站地址**: https://MrZh2025.github.io/HeYiYao_Public/
+
+直接访问以下页面：
+- **首页**: https://MrZh2025.github.io/HeYiYao_Public/
+- **元素周期表**: https://MrZh2025.github.io/HeYiYao_Public/yuansuzhouqibiao.html
+- **数据大屏**: https://MrZh2025.github.io/HeYiYao_Public/dashboard.html
+- **药物原理**: https://MrZh2025.github.io/HeYiYao_Public/放射性药物原理.html
 
 ### 本地部署
+
 1. 克隆仓库到本地
 ```bash
-git clone https://github.com/你的用户名/你的仓库名.git
+git clone https://github.com/MrZh2025/HeYiYao_Public.git
 ```
 
 2. 使用浏览器打开HTML文件
@@ -90,6 +94,34 @@ python -m http.server 8000
 - 了解各环节关键企业
 - 掌握产业发展趋势
 
+## 🔄 部署说明
+
+本项目使用 GitHub Actions 自动部署到 GitHub Pages。
+
+### 自动部署流程
+
+每次推送代码到 `main` 分支时，会自动触发部署：
+
+1. 修改文件后提交更改
+```bash
+git add .
+git commit -m "更新内容描述"
+git push
+```
+
+2. 查看部署状态
+- 访问：https://github.com/MrZh2025/HeYiYao_Public/actions
+
+3. 等待部署完成（约2-5分钟）
+
+4. 访问网站查看更新效果
+
+### 快速部署
+
+Windows 用户可以直接运行 `快速部署.bat` 脚本，按提示操作即可。
+
+详细部署说明请查看：[GitHub部署完整指南.md](./GitHub部署完整指南.md)
+
 ## 🤝 贡献
 
 欢迎提交Issue和Pull Request来帮助改进项目!
@@ -102,7 +134,12 @@ python -m http.server 8000
 
 如有问题或建议,欢迎通过GitHub Issues联系。
 
+- **GitHub**: https://github.com/MrZh2025/HeYiYao_Public
+- **Issues**: https://github.com/MrZh2025/HeYiYao_Public/issues
+
 ---
 
 **注意**: 本项目包含的医疗和核医学信息仅供参考,不构成医疗建议。
+
+**最后更新**: 2025-01-15
 

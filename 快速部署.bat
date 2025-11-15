@@ -2,7 +2,7 @@
 chcp 65001 >nul
 echo ========================================
 echo    GitHub 自动部署脚本
-echo    仓库: MrZh2025/HeYiYao
+echo    仓库: MrZh2025/HeYiYao_Public
 echo ========================================
 echo.
 
@@ -30,8 +30,8 @@ echo.
 echo ========================================
 echo 推送完成！
 echo.
-echo 查看部署状态: https://github.com/MrZh2025/HeYiYao/actions
-echo 访问网站: https://MrZh2025.github.io/HeYiYao/
+echo 查看部署状态: https://github.com/MrZh2025/HeYiYao_Public/actions
+echo 访问网站: https://MrZh2025.github.io/HeYiYao_Public/
 echo ========================================
 echo.
 pause
