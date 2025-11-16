@@ -1,81 +1,23 @@
-# ========================================
-# 只上传网站展示必需的文件
-# 排除所有开发工具、说明文档、脚本等
-# ========================================
-
-# Python 脚本和相关文件（开发工具，不需要上传）
+# Python脚本和工具
 *.py
+*.pyc
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual Environment
-venv/
-ENV/
-env/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# 压缩文件
-*.zip
-*.rar
-*.7z
-
-# 临时文件
-*.tmp
-*.bak
-*.log
-
-# 说明文档（本地使用，不需要上传）
-README.md
+# 说明文档
+*.txt
 一键部署说明.md
-*.md
-# 但保留 GitHub Actions 需要的文档
-!.github/**/*.md
 
-# 批处理脚本（本地使用，不需要上传）
+# 批处理文件
 *.bat
 
-# PDF 源文件（太大，不需要上传）
+# 压缩包
+*.zip
+
+# PDF原始文档（保留HTML版本）
 产业图谱/*.pdf
-*.pdf
+基础知识/*.pdf
+基础知识/*.docx
 
-# Word 文档（不需要上传）
-*.docx
-*.doc
-
-# 开发资料压缩包
-元素周期表系统开发资料_*.zip
-
-# 敏感配置文件（包含账号密码）
+# IDE配置
+.augment/
 .github-config.txt
-*密码*
-*登录*
