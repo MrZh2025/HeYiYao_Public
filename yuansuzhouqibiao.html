@@ -5,6 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>核医学元素周期表 - 关键核素标注</title>
     <style>
+        /* CSS变量定义 - 深色主题（默认） */
+        :root {
+            /* 背景色 */
+            --bg-gradient-start: #0f172a;
+            --bg-gradient-mid: #1e293b;
+            --bg-gradient-end: #1e293b;
+            
+            /* 容器色 */
+            --container-bg: rgba(30, 41, 59, 0.9);
+            --container-border: #475569;
+            --container-shadow: rgba(71, 85, 105, 0.3);
+            
+            /* 主要文字色 */
+            --title-color: #ffffff;
+            --title-shadow: rgba(0, 0, 0, 0.3);
+            --subtitle-color: #e2e8f0;
+            --text-primary: #e2e8f0;
+            --text-secondary: #cbd5e1;
+            --text-tertiary: #94a3b8;
+            
+            /* 元素格子 */
+            --element-bg: rgba(51, 65, 85, 0.8);
+            --element-border: #64748b;
+            --element-text: #ffffff;
+            --element-shadow: rgba(0, 0, 0, 0.2);
+            
+            /* 符号和数字 */
+            --symbol-color: #ffffff;
+            --atomic-color: #ffffff;
+            
+            /* 医用核素颜色 */
+            --accelerator-start: rgba(96, 165, 250, 0.5);
+            --accelerator-end: rgba(59, 130, 246, 0.7);
+            --accelerator-border: #60a5fa;
+            --accelerator-shadow: rgba(96, 165, 250, 0.4);
+            
+            --reactor-start: rgba(192, 132, 252, 0.5);
+            --reactor-end: rgba(168, 85, 247, 0.7);
+            --reactor-border: #c084fc;
+            --reactor-shadow: rgba(192, 132, 252, 0.4);
+            
+            --other-start: rgba(34, 211, 238, 0.5);
+            --other-end: rgba(6, 182, 212, 0.7);
+            --other-border: #22d3ee;
+            --other-shadow: rgba(34, 211, 238, 0.4);
+            
+            /* 按钮色 */
+            --btn-bg: rgba(96, 165, 250, 0.1);
+            --btn-border: #60a5fa;
+            --btn-text: #60a5fa;
+            --btn-shadow: rgba(96, 165, 250, 0.3);
+            
+            /* 图例和面板 */
+            --legend-bg: rgba(51, 65, 85, 0.6);
+            --panel-bg: rgba(51, 65, 85, 0.6);
+            
+            /* 模态框 */
+            --modal-bg: rgba(30, 41, 59, 0.95);
+            --modal-border: #475569;
+            
+            /* 粒子颜色 */
+            --particle-1: rgba(96, 165, 250, 0.6);
+            --particle-2: rgba(192, 132, 252, 0.5);
+            --particle-3: rgba(34, 211, 238, 0.4);
+        }
+        
+        /* 浅色主题 */
+        body.light-theme {
+            /* 背景色 */
+            --bg-gradient-start: #ffffff;
+            --bg-gradient-mid: #f8fafc;
+            --bg-gradient-end: #f1f5f9;
+            
+            /* 容器色 */
+            --container-bg: rgba(255, 255, 255, 0.95);
+            --container-border: #e2e8f0;
+            --container-shadow: rgba(0, 0, 0, 0.05);
+            
+            /* 主要文字色 */
+            --title-color: #1e293b;
+            --title-shadow: rgba(0, 0, 0, 0.1);
+            --subtitle-color: #475569;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            
+            /* 元素格子 */
+            --element-bg: #ffffff;
+            --element-border: #cbd5e1;
+            --element-text: #1e293b;
+            --element-shadow: rgba(0, 0, 0, 0.05);
+            
+            /* 符号和数字 */
+            --symbol-color: #1e293b;
+            --atomic-color: #1e293b;
+            
+            /* 医用核素颜色 - 浅色系 */
+            --accelerator-start: rgba(59, 130, 246, 0.3);
+            --accelerator-end: rgba(37, 99, 235, 0.5);
+            --accelerator-border: #3b82f6;
+            --accelerator-shadow: rgba(59, 130, 246, 0.3);
+            
+            --reactor-start: rgba(168, 85, 247, 0.3);
+            --reactor-end: rgba(147, 51, 234, 0.5);
+            --reactor-border: #a855f7;
+            --reactor-shadow: rgba(168, 85, 247, 0.3);
+            
+            --other-start: rgba(6, 182, 212, 0.3);
+            --other-end: rgba(8, 145, 178, 0.5);
+            --other-border: #06b6d4;
+            --other-shadow: rgba(6, 182, 212, 0.3);
+            
+            /* 按钮色 */
+            --btn-bg: rgba(59, 130, 246, 0.1);
+            --btn-border: #3b82f6;
+            --btn-text: #3b82f6;
+            --btn-shadow: rgba(59, 130, 246, 0.2);
+            
+            /* 图例和面板 */
+            --legend-bg: rgba(255, 255, 255, 0.9);
+            --panel-bg: rgba(255, 255, 255, 0.9);
+            
+            /* 模态框 */
+            --modal-bg: rgba(255, 255, 255, 0.98);
+            --modal-border: #e2e8f0;
+            
+            /* 粒子颜色 */
+            --particle-1: rgba(59, 130, 246, 0.3);
+            --particle-2: rgba(168, 85, 247, 0.25);
+            --particle-3: rgba(6, 182, 212, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,32 +145,72 @@
 
         body {
             font-family: 'Microsoft YaHei', 'SimHei', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
             padding: 20px;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            transition: background 0.5s ease;
+        }
+
+        /* 星空粒子背景 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, var(--particle-1), transparent),
+                radial-gradient(2px 2px at 60% 70%, var(--particle-2), transparent),
+                radial-gradient(1px 1px at 50% 50%, var(--particle-3), transparent),
+                radial-gradient(1px 1px at 80% 10%, var(--particle-1), transparent),
+                radial-gradient(2px 2px at 90% 60%, var(--particle-2), transparent),
+                radial-gradient(1px 1px at 33% 80%, var(--particle-1), transparent),
+                radial-gradient(1px 1px at 15% 90%, var(--particle-3), transparent);
+            background-size: 200% 200%;
+            animation: particleFloat 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
         }
 
         .container {
             max-width: 1800px;
             margin: 0 auto;
-            background: white;
+            background: var(--container-bg);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 0 40px var(--container-shadow), 0 10px 40px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--container-border);
+            position: relative;
+            z-index: 1;
+            transition: all 0.5s ease;
         }
 
         h1 {
             text-align: center;
-            color: #333;
+            color: var(--title-color);
             margin-bottom: 10px;
             font-size: 32px;
+            text-shadow: 0 2px 4px var(--title-shadow);
+            transition: color 0.5s ease, text-shadow 0.5s ease;
         }
 
         .subtitle {
             text-align: center;
-            color: #666;
+            color: var(--subtitle-color);
             margin-bottom: 20px;
             font-size: 14px;
+            text-shadow: none;
+            transition: color 0.5s ease;
         }
 
         .legend {
@@ -48,32 +220,42 @@
             gap: 15px;
             margin-bottom: 25px;
             padding: 15px;
-            background: #f8f9fa;
+            background: var(--legend-bg);
             border-radius: 10px;
+            border: 1px solid var(--container-border);
+            backdrop-filter: blur(5px);
+            transition: all 0.5s ease;
         }
 
         /* 制备方式统计图表样式 */
         .preparation-stats-container {
-            background: white;
+            background: var(--panel-bg);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 0 30px var(--element-shadow);
+            border: 1px solid var(--container-border);
+            backdrop-filter: blur(5px);
+            transition: all 0.5s ease;
         }
 
         .preparation-stats-title {
             text-align: center;
             font-size: 24px;
             font-weight: bold;
-            color: #333;
+            color: var(--title-color);
             margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--title-shadow);
+            transition: all 0.5s ease;
         }
 
         .preparation-stats-subtitle {
             text-align: center;
             font-size: 14px;
-            color: #666;
+            color: var(--subtitle-color);
             margin-bottom: 30px;
+            text-shadow: 0 0 5px var(--subtitle-color);
+            transition: all 0.5s ease;
         }
 
         .chart-container {
@@ -95,6 +277,8 @@
             align-items: center;
             gap: 8px;
             font-size: 14px;
+            color: var(--text-primary);
+            transition: color 0.5s ease;
         }
 
         .chart-legend-color {
@@ -136,12 +320,14 @@
             position: relative;
             transition: all 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 0 10px rgba(0, 255, 249, 0.3);
+            border: 1px solid rgba(0, 255, 249, 0.3);
         }
 
         .chart-bar:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 0 20px rgba(0, 255, 249, 0.6),
+                        0 4px 15px rgba(0,0,0,0.4);
         }
 
         .chart-bar-value {
@@ -152,20 +338,26 @@
             font-size: 13px;
             font-weight: bold;
             white-space: nowrap;
+            color: var(--title-color);
+            text-shadow: 0 0 5px var(--title-shadow);
+            transition: all 0.5s ease;
         }
 
         .chart-bar-label {
             text-align: center;
             font-size: 13px;
             font-weight: bold;
-            color: #333;
+            color: var(--title-color);
             margin-top: 5px;
+            text-shadow: 0 0 5px var(--title-shadow);
+            transition: all 0.5s ease;
         }
 
         .chart-year-label {
             font-size: 11px;
-            color: #666;
+            color: var(--subtitle-color);
             margin-top: 2px;
+            transition: color 0.5s ease;
         }
 
         /* 图片容器样式 */
@@ -181,14 +373,15 @@
             max-width: 900px;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 249, 0.3);
             transition: all 0.3s ease;
             cursor: pointer;
+            border: 1px solid rgba(0, 255, 249, 0.2);
         }
 
         .chart-reference-image:hover {
             transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 0 30px rgba(0, 255, 249, 0.5);
         }
 
         .controls {
@@ -205,9 +398,12 @@
             align-items: center;
             gap: 20px;
             padding: 10px 20px;
-            background: white;
+            background: var(--legend-bg);
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px var(--element-shadow);
+            border: 1px solid var(--container-border);
+            backdrop-filter: blur(5px);
+            transition: all 0.5s ease;
         }
 
         .connection-legend.visible {
@@ -219,6 +415,8 @@
             align-items: center;
             gap: 8px;
             font-size: 12px;
+            color: var(--text-primary);
+            transition: color 0.5s ease;
         }
 
         .connection-legend-line {
@@ -228,25 +426,48 @@
         }
 
         .toggle-btn {
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            padding: 12px 24px;
+            background: var(--btn-bg);
+            color: var(--btn-text);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
+            font-size: 15px;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px var(--btn-shadow);
+            text-shadow: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .toggle-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px var(--btn-shadow);
+            filter: brightness(1.1);
         }
 
         .toggle-btn.active {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, var(--reactor-start), var(--reactor-end));
+            color: #ffffff;
+            box-shadow: 0 4px 12px var(--reactor-shadow);
+        }
+
+        /* 浅色主题下的按钮样式 */
+        body.light-theme .toggle-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+        }
+
+        body.light-theme .toggle-btn:hover {
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        body.light-theme .toggle-btn.active {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
         }
 
         /* 返回主页按钮 */
@@ -255,24 +476,29 @@
             top: 20px;
             left: 20px;
             padding: 12px 24px;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            border: none;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: 2px solid var(--btn-border);
             border-radius: 25px;
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+            box-shadow: 0 0 20px var(--btn-shadow),
+                        inset 0 0 10px var(--btn-shadow);
             transition: all 0.3s ease;
             z-index: 1001;
             display: flex;
             align-items: center;
             gap: 8px;
+            text-shadow: none;
+            backdrop-filter: blur(5px);
         }
 
         .back-home-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+            box-shadow: 0 0 30px var(--btn-shadow),
+                        inset 0 0 15px var(--btn-shadow);
+            filter: brightness(1.2);
         }
 
         .back-home-btn .arrow {
@@ -333,13 +559,17 @@
             align-items: center;
             gap: 8px;
             font-size: 13px;
+            color: var(--text-primary);
+            transition: color 0.5s ease;
         }
 
         .legend-color {
             width: 25px;
             height: 25px;
             border-radius: 4px;
-            border: 2px solid #333;
+            border: 2px solid var(--container-border);
+            box-shadow: 0 0 10px var(--element-shadow);
+            transition: all 0.5s ease;
         }
 
         .periodic-table {
@@ -358,7 +588,7 @@
 
         .element {
             aspect-ratio: 1;
-            border: 2px solid #ddd;
+            border: 1.5px solid var(--element-border);
             border-radius: 6px;
             padding: 4px;
             text-align: center;
@@ -368,35 +598,44 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background: white;
+            background: var(--element-bg);
             font-size: 11px;
+            color: var(--element-text);
+            box-shadow: 0 1px 3px var(--element-shadow);
         }
 
         .element:hover {
-            transform: scale(1.15);
+            transform: scale(1.1);
             z-index: 10;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px var(--btn-shadow);
+            border-color: var(--btn-border);
         }
 
         .element.medical {
-            border-width: 3px;
+            border-width: 2px;
             font-weight: bold;
         }
 
         .atomic-number {
             font-size: 9px;
-            color: #666;
+            color: var(--atomic-color);
+            text-shadow: none;
+            transition: color 0.5s ease;
         }
 
         .symbol {
             font-size: 16px;
             font-weight: bold;
             margin: 2px 0;
+            color: var(--symbol-color);
+            text-shadow: none;
+            transition: color 0.5s ease;
         }
 
         .name {
             font-size: 9px;
-            color: #444;
+            color: var(--text-tertiary);
+            transition: color 0.5s ease;
         }
 
         .isotope-info {
@@ -413,19 +652,33 @@
 
         /* 制备方式颜色 */
         .accelerator {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--accelerator-start) 0%, var(--accelerator-end) 100%);
+            color: var(--element-text);
+            border-color: var(--accelerator-border);
+            box-shadow: 0 0 10px var(--accelerator-shadow),
+                        inset 0 0 10px var(--accelerator-shadow);
+            transition: all 0.5s ease;
         }
 
         .reactor {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--reactor-start) 0%, var(--reactor-end) 100%);
+            color: var(--element-text);
+            border-color: var(--reactor-border);
+            box-shadow: 0 0 10px var(--reactor-shadow),
+                        inset 0 0 10px var(--reactor-shadow);
+            transition: all 0.5s ease;
         }
 
         .other-source {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--other-start) 0%, var(--other-end) 100%);
+            color: var(--element-text);
+            border-color: var(--other-border);
+            box-shadow: 0 0 10px var(--other-shadow),
+                        inset 0 0 10px var(--other-shadow);
+            transition: all 0.5s ease;
         }
+
+        /* 医用核素使用主题颜色 */
 
         .empty {
             border: none;
@@ -433,26 +686,38 @@
         }
 
         .lanthanide {
-            background-color: #fff9e6;
-            border-color: #f4b942;
+            background-color: rgba(255, 249, 230, 0.1);
+            border-color: rgba(244, 185, 66, 0.5);
         }
         
         .actinide {
-            background-color: #ffe6f0;
-            border-color: #ff6b9d;
+            background-color: rgba(255, 230, 240, 0.1);
+            border-color: rgba(255, 107, 157, 0.5);
         }
         
         .lanthanide.medical, .actinide.medical {
-            /* 医用核素保持渐变背景色，但保留边框颜色 */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* 医用核素保持霓虹渐变背景色 */
+            background: linear-gradient(135deg, var(--accelerator-start) 0%, var(--accelerator-end) 100%);
+            border-color: var(--accelerator-border);
+            box-shadow: 0 0 15px var(--accelerator-shadow),
+                        inset 0 0 15px var(--accelerator-shadow);
+            transition: all 0.5s ease;
         }
         
         .lanthanide.medical.reactor, .actinide.medical.reactor {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, var(--reactor-start) 0%, var(--reactor-end) 100%);
+            border-color: var(--reactor-border);
+            box-shadow: 0 0 15px var(--reactor-shadow),
+                        inset 0 0 15px var(--reactor-shadow);
+            transition: all 0.5s ease;
         }
         
         .lanthanide.medical.other-source, .actinide.medical.other-source {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, var(--other-start) 0%, var(--other-end) 100%);
+            border-color: var(--other-border);
+            box-shadow: 0 0 15px var(--other-shadow),
+                        inset 0 0 15px var(--other-shadow);
+            transition: all 0.5s ease;
         }
 
         .modal {
@@ -463,8 +728,9 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.9);
             animation: fadeIn 0.3s;
+            backdrop-filter: blur(5px);
         }
 
         @keyframes fadeIn {
@@ -473,7 +739,7 @@
         }
 
         .modal-content {
-            background-color: white;
+            background: var(--modal-bg);
             margin: 5% auto;
             padding: 30px;
             border-radius: 15px;
@@ -481,8 +747,11 @@
             max-width: 800px;
             max-height: 80vh;
             overflow-y: auto;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.4);
+            box-shadow: 0 0 50px var(--container-shadow), 0 15px 50px rgba(0,0,0,0.6);
             animation: slideIn 0.3s;
+            border: 1px solid var(--modal-border);
+            backdrop-filter: blur(10px);
+            transition: all 0.5s ease;
         }
 
         @keyframes slideIn {
@@ -491,33 +760,43 @@
         }
 
         .close {
-            color: #aaa;
+            color: var(--title-color);
             float: right;
             font-size: 35px;
             font-weight: bold;
             cursor: pointer;
             line-height: 20px;
+            text-shadow: 0 0 10px var(--title-shadow);
+            transition: all 0.3s ease;
         }
 
         .close:hover {
-            color: #000;
+            color: var(--reactor-border);
+            text-shadow: 0 0 15px var(--reactor-shadow);
+            transform: rotate(90deg);
         }
 
         .modal-header {
-            border-bottom: 2px solid #667eea;
+            border-bottom: 2px solid var(--container-border);
             padding-bottom: 15px;
             margin-bottom: 20px;
+            box-shadow: 0 2px 10px var(--element-shadow);
+            transition: all 0.5s ease;
         }
 
         .modal-title {
             font-size: 28px;
-            color: #333;
+            color: var(--title-color);
             margin-bottom: 5px;
+            text-shadow: 0 0 10px var(--title-shadow);
+            transition: all 0.5s ease;
         }
 
         .modal-subtitle {
             font-size: 14px;
-            color: #666;
+            color: var(--subtitle-color);
+            text-shadow: 0 0 5px var(--subtitle-color);
+            transition: all 0.5s ease;
         }
 
         .info-section {
@@ -525,21 +804,27 @@
         }
 
         .info-section h3 {
-            color: #667eea;
+            color: var(--title-color);
             margin-bottom: 10px;
             font-size: 18px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid var(--title-color);
             padding-left: 10px;
+            text-shadow: 0 0 8px var(--title-shadow);
+            box-shadow: -4px 0 10px var(--element-shadow);
+            transition: all 0.5s ease;
         }
 
         .info-section ul {
             padding-left: 20px;
             line-height: 1.8;
+            color: var(--text-primary);
+            transition: color 0.5s ease;
         }
 
         .info-section p {
             line-height: 1.8;
-            color: #555;
+            color: var(--text-secondary);
+            transition: color 0.5s ease;
         }
 
         .separator {
@@ -1562,6 +1847,46 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(255, 165, 0, 0.6);
         }
+
+        /* 主题切换按钮 */
+        .theme-toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            background: var(--btn-bg);
+            color: var(--btn-text);
+            border: 2px solid var(--btn-border);
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 20px var(--btn-shadow),
+                        inset 0 0 10px var(--btn-shadow);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-shadow: 0 0 5px var(--btn-text);
+            backdrop-filter: blur(5px);
+        }
+
+        .theme-toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px var(--btn-shadow),
+                        inset 0 0 15px var(--btn-shadow);
+            filter: brightness(1.2);
+        }
+
+        .theme-toggle-btn .icon {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover .icon {
+            transform: rotate(20deg) scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -1569,6 +1894,12 @@
     <button class="back-home-btn" onclick="goBackHome()">
         <span class="arrow">←</span>
         <span>返回主页</span>
+    </button>
+
+    <!-- 主题切换按钮 -->
+    <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
+        <span class="icon" id="themeIcon">🌙</span>
+        <span id="themeText">深色模式</span>
     </button>
 
     <!-- PDF查看器弹窗 -->
@@ -7693,6 +8024,44 @@
                     };
                     document.addEventListener('keydown', closeOnEsc);
                 });
+            }
+        });
+
+        // 主题切换功能
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+            
+            // 切换主题
+            body.classList.toggle('light-theme');
+            
+            // 更新按钮文本和图标
+            if (body.classList.contains('light-theme')) {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = '浅色模式';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.textContent = '🌙';
+                themeText.textContent = '深色模式';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // 页面加载时检查用户偏好
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
+            
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = '浅色模式';
+            } else {
+                // 默认深色主题
+                themeIcon.textContent = '🌙';
+                themeText.textContent = '深色模式';
             }
         });
     </script>
